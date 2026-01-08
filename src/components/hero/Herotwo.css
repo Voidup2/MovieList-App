@@ -1,0 +1,61 @@
+/* Section wrapper */
+.movie-cards {
+  padding: 2rem 1rem;
+  padding-left: clamp(1.5rem, 8vw, 8rem);
+  color: white;
+}
+
+.movie-cards h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+/* Cards row */
+.cards-container {
+  display: flex;              /* ✅ makes row */
+  gap: 1.5rem;                /* space between cards */
+  flex-wrap: wrap;            /* wraps on smaller screens */
+}
+
+/* Individual card */
+.movie-card {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 200px;               /* fixed card width */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Image placeholder */
+.card-img {
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-img h3 {
+  font-size: 0.9rem;
+  color: #cfd8dc;
+}
+
+/* Title */
+.card-title p {
+  font-size: 1.2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
