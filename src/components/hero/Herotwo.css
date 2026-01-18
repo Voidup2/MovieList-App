@@ -1,8 +1,9 @@
 /* Section wrapper */
 .movie-cards {
   padding: 2rem 1rem;
-  padding-left: clamp(1.5rem, 8vw, 8rem);
   color: white;
+  max-width: 1200px;   /* 👈 controls container width */
+  margin: 0 auto;
 }
 
 .movie-cards h2 {
@@ -12,17 +13,16 @@
 
 /* Cards row */
 .cards-container {
-  display: flex;              /* ✅ makes row */
+  display: grid;              /* ✅ makes row */
   gap: 1.5rem;                /* space between cards */
-  flex-wrap: wrap;            /* wraps on smaller screens */
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* Individual card */
 .movie-card {
   background: rgba(124, 58, 237, 0.2);
   border-radius: 12px;
-  padding: 1rem;
-  width: 200px;               /* fixed card width */
+  padding: 0.8rem;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -36,12 +36,9 @@
 .card-img {
   height: 300px;
   overflow: hidden;
-  border-radius: 10px;
-
+  border-radius: 5px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .card-img img {
@@ -58,4 +55,140 @@
 .card-title p {
   font-size: 1.2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.load-more{
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+.load-more button {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: #7c3aed;
+  color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.load-more button:hover {
+  transform: scale(1.05);
+}
+
+.load-more button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.fade-in {
+  animation: fadeSlideUp 0.6s ease-in;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1200px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 4 cards per row */
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Smaller card */
+  .movie-card {
+    padding: 0.3rem;
+  }
+
+  /* Smaller image */
+  .card-img {
+    height: 110px;
+  }
+
+  /* Smaller text */
+  .card-title p {
+    font-size: 0.7rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  /* 🚫 HIDE ALL CARDS AFTER 8 */
+  .movie-card:nth-child(n + 9) {
+    display: none;
+  }
+  .filter-bar {
+    gap: 0.5rem;
+  }
+  .filter-bar button {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+  }
+}
+.filter-bar {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+
+  justify-content: center; /* center filters */
+}
+.filter-bar button {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px; /* pill shape */
+  border: 1px solid rgba(124, 58, 237, 0.35);
+
+  background: rgba(124, 58, 237, 0.12);
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+/* Hover */
+.filter-bar button:hover {
+  background: rgba(124, 58, 237, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+/* Active Filter (IMPORTANT) */
+.filter-bar button.active {
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #a78bfa
+  );
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.45);
+}
+
+/* Focus (accessibility) */
+.filter-bar button:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+}
+.movie-card {
+  cursor: pointer;
 }

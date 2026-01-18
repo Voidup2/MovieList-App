@@ -1,11 +1,14 @@
+import Footer from "../footer/Footer";
 import "./Layout.css";
-import Secondlout from "./Secondlout.jsx";
 
 function Layout({ children }) {
   return (
-  <Secondlout>
-    <div className="layout">{children}</div>;
-  </Secondlout>
+    <div className="layout-container">
+      <main style={{ flex: 1 }}>
+        {children}
+      </main>
+      <Footer />
+    </div>
   );
 }
 

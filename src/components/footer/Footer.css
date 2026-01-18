@@ -1,0 +1,64 @@
+.footer {
+  margin-top: 4rem;
+  background: rgba(15, 15, 18, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+/* Main container */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Brand */
+.footer-brand h2 {
+  color: white;
+  margin-bottom: 0.6rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Links */
+.footer-links h4,
+.footer-info h4 {
+  margin-bottom: 0.8rem;
+  color: white;
+}
+
+.footer-links a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #7c3aed;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
