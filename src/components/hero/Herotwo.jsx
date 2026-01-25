@@ -47,6 +47,7 @@ const Herotwo = ({searchQuery = ""}) => {
                 id: movie.id,
                 title: movie.title || movie.name,
                 poster: movie.poster_path,
+                rating: movie.vote_average,
                 mediaType: movie.media_type || (movie.name ? "tv" : "movie"),
             }));
 
@@ -112,11 +113,24 @@ const Herotwo = ({searchQuery = ""}) => {
                             alt={movie.title}
                             loading="lazy"
                             />
-                    </div>
-                    <div className='card-title'>
-                        <p>{movie.title}</p>
-                    </div>
+            <div className="card-overlay">
+                <h3>{movie.title}</h3>
+
+            <div className='movie-bottom'>    
+                <span className={`badge ${movie.mediaType}`}>
+                  {movie.mediaType === "movie"
+                    ? "Movie"
+                    : movie.mediaType === "tv"
+                    ? "Web Series"
+                    : "Anime"}
+                </span>
+                <p className="movie-rating">
+        ⭐       {movie.rating ? movie.rating.toFixed(1) : "N/A"}/10
+                </p>
                 </div>
+            </div>
+        </div>
+</div>
             ))}
         </div>
         <div className='load-more'>

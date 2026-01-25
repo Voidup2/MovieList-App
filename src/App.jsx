@@ -6,6 +6,7 @@ import Layout from './components/Layout/Layout'
 import Hero from './components/hero/Hero'
 import Herotwo from './components/hero/Herotwo'
 import Details from './components/details/Details'
+import About from './components/about/About';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +31,7 @@ function App() {
           {/* Movie Details Page */}
           <Route path="/movie/:id" element={<Details />} />
           <Route path="/tv/:id" element={<Details />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Layout>
     </Router>

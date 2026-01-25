@@ -20,11 +20,30 @@
 
 /* Individual card */
 .movie-card {
-  background: rgba(124, 58, 237, 0.2);
-  border-radius: 12px;
   padding: 0.8rem;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* ✅ Bottom row inside overlay */
+.movie-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+/* Rating */
+.movie-rating {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .movie-card:hover {
@@ -36,9 +55,8 @@
 .card-img {
   height: 300px;
   overflow: hidden;
-  border-radius: 5px;
   display: flex;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
 }
 
 .card-img img {
@@ -56,6 +74,56 @@
   font-size: 1.2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.2)
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.4rem;
+
+  padding: 1rem;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.movie-card:hover .card-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-overlay h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.card-overlay .rating {
+  font-size: 0.85rem;
+  color: #facc15;
+}
+.badge {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.badge.movie {
+  background: #7c3aed;
+}
+
+.badge.tv {
+  background: #10b981;
+}
+
 .load-more{
   display: flex;
   justify-content: center;
@@ -120,13 +188,6 @@
     height: 110px;
   }
 
-  /* Smaller text */
-  .card-title p {
-    font-size: 0.7rem;
-    line-height: 1.1;
-    text-align: center;
-  }
-
   /* 🚫 HIDE ALL CARDS AFTER 8 */
   .movie-card:nth-child(n + 9) {
     display: none;
@@ -141,7 +202,7 @@
 }
 .filter-bar {
   display: flex;
-  gap: 0.8rem;
+  gap: 3.8rem;
   flex-wrap: wrap;
 
   margin-bottom: 1.5rem;
@@ -151,7 +212,7 @@
 }
 .filter-bar button {
   padding: 0.45rem 1.1rem;
-  border-radius: 999px; /* pill shape */
+  border-radius: 0.2rem;
   border: 1px solid rgba(124, 58, 237, 0.35);
 
   background: rgba(124, 58, 237, 0.12);
